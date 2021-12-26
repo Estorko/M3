@@ -32,12 +32,13 @@ namespace M3
             String connStr =WebConfigurationManager.ConnectionStrings["PostGradOffice"].ToString();
             //create new connection
             SqlConnection conn = new SqlConnection(connStr);
-            int id = Int16.Parse(Username.Text);
+            int id = Int16.Parse(ID.Text);
             String pass = password.Text;
             SqlCommand loginproc = new SqlCommand("userLogin", conn);
+            loginproc.CommandType = CommandType.StoredProcedure;
             loginproc.Parameters.Add(new SqlParameter("@id", id));
             loginproc.Parameters.Add(new SqlParameter("@password", pass));
-            SqlParameter success = loginproc.Parameters.Add("@success", SqlDbType.Bit);
+            SqlParameter success = loginproc.Parameters.Add("@success", SqlDbType.Int);
             SqlParameter type = loginproc.Parameters.Add("@type", SqlDbType.Int);
             success.Direction = ParameterDirection.Output;
             type.Direction = ParameterDirection.Output;
@@ -49,6 +50,7 @@ namespace M3
                 Response.Write("TRUE");
                 //Response.Redirect
             }
+            else Response.Write("False");
         
 
         }
