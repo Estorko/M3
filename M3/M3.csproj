@@ -68,6 +68,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Login.aspx" />
+    <Content Include="Register_Examiner.aspx" />
+    <Content Include="Register_GucianStudent.aspx" />
+    <Content Include="Register_Homepage.aspx" />
+    <Content Include="Register_NonGucianStudent.aspx" />
+    <Content Include="Register_Supervisor.aspx" />
+    <Content Include="Student_Main.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -79,6 +85,48 @@
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Register_Examiner.aspx.cs">
+      <DependentUpon>Register_Examiner.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Register_Examiner.aspx.designer.cs">
+      <DependentUpon>Register_Examiner.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Register_GucianStudent.aspx.cs">
+      <DependentUpon>Register_GucianStudent.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Register_GucianStudent.aspx.designer.cs">
+      <DependentUpon>Register_GucianStudent.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Register_Homepage.aspx.cs">
+      <DependentUpon>Register_Homepage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Register_Homepage.aspx.designer.cs">
+      <DependentUpon>Register_Homepage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Register_NonGucianStudent.aspx.cs">
+      <DependentUpon>Register_NonGucianStudent.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Register_NonGucianStudent.aspx.designer.cs">
+      <DependentUpon>Register_NonGucianStudent.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Register_Supervisor.aspx.cs">
+      <DependentUpon>Register_Supervisor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Register_Supervisor.aspx.designer.cs">
+      <DependentUpon>Register_Supervisor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Student_Main.aspx.cs">
+      <DependentUpon>Student_Main.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Student_Main.aspx.designer.cs">
+      <DependentUpon>Student_Main.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

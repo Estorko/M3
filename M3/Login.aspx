@@ -11,8 +11,8 @@
         <div>
             Log in<br />
             <br />
-            ID<br />
-            <asp:TextBox ID="ID" runat="server"></asp:TextBox>
+            Email<br />
+            <asp:TextBox ID="Email" runat="server"></asp:TextBox>
             <br />
             Password<br />
             <asp:TextBox ID="password" runat="server"></asp:TextBox>

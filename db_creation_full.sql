@@ -1,6 +1,5 @@
-﻿--CREATE DATABASE PostGradOffice;
+﻿CREATE DATABASE PostGradOffice;
 go
-select * from PostGradUser
 use PostGradOffice;
 CREATE TABLE PostGradUser(
 id int primary key identity(1,1),
@@ -452,6 +451,22 @@ insert into NonGucianStudent(id,firstName,lastName,faculty,address)
 values(@id,@first_name,@last_name,@faculty,@address)
 end
 go
+create proc examinerRegister
+@first_name varchar(20),
+@last_name varchar(20),
+@password varchar(20),
+@fieldOfWork varchar(100),
+@Email varchar(50),
+@isNational bit
+as
+declare @id int
+declare @name varchar(50)
+insert into PostGradUser(email,password)values(@email,@password)
+set @id=SCOPE_IDENTITY()
+set @name = CONCAT(@first_name,@last_name)
+insert into Examiner(id,name,fieldOfWork,isNational) values
+(@id,@name,@fieldOfWork,@isNational)
+go
 create proc supervisorRegister
 @first_name varchar(20),
 @last_name varchar(20),
@@ -470,17 +485,17 @@ insert into Supervisor(id,name,faculty) values(@id,@name,@faculty)
 end
 go
 Create proc userLogin
-@id int,
+@email varchar(20),
 @password varchar(20),
 @success bit output,
 @type int output
 as
+declare @id int
 begin
 if exists(
-select ID,password
-from PostGradUser
-where id=@id and password=@password)
+select email,password from PostGradUser where email=@email and password=@password)
 begin
+set @id=(select id from PostGradUser where email=@email)
 set @success =1
 -- check user type 0-->Student,1-->Admin,2-->Supervisor ,3-->Examiner
 if exists(select id from GucianStudent where id=@id union select id from

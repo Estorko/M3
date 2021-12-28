@@ -32,11 +32,11 @@ namespace M3
             String connStr =WebConfigurationManager.ConnectionStrings["PostGradOffice"].ToString();
             //create new connection
             SqlConnection conn = new SqlConnection(connStr);
-            int id = Int16.Parse(ID.Text);
+            String email = Email.Text;
             String pass = password.Text;
             SqlCommand loginproc = new SqlCommand("userLogin", conn);
             loginproc.CommandType = CommandType.StoredProcedure;
-            loginproc.Parameters.Add(new SqlParameter("@id", id));
+            loginproc.Parameters.Add(new SqlParameter("@email", email));
             loginproc.Parameters.Add(new SqlParameter("@password", pass));
             SqlParameter success = loginproc.Parameters.Add("@success", SqlDbType.Int);
             SqlParameter type = loginproc.Parameters.Add("@type", SqlDbType.Int);

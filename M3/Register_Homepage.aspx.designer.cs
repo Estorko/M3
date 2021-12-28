@@ -11,7 +11,7 @@ namespace M3
 {
 
 
-    public partial class Login
+    public partial class Register_Homepage
     {
 
         /// <summary>
@@ -24,30 +24,39 @@ namespace M3
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// Email control.
+        /// GUCian control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Email;
+        protected global::System.Web.UI.WebControls.Button GUCian;
 
         /// <summary>
-        /// password control.
+        /// NonGUCian control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox password;
+        protected global::System.Web.UI.WebControls.Button NonGUCian;
 
         /// <summary>
-        /// sign_in control.
+        /// Supervisor control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button sign_in;
+        protected global::System.Web.UI.WebControls.Button Supervisor;
+
+        /// <summary>
+        /// Examiner control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Examiner;
     }
 }
