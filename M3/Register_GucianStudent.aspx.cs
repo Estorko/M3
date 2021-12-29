@@ -56,6 +56,7 @@ namespace M3
             else
             {
                 GucianRegister.ExecuteNonQuery();
+                Response.Text = "Success !, User Created";
                 conn.Close();
              //   Response.Redirect("Student_Main.aspx");
             }
