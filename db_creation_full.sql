@@ -1,4 +1,4 @@
-﻿CREATE DATABASE PostGradOffice;
+﻿--CREATE DATABASE PostGradOffice;
 go
 use PostGradOffice;
 CREATE TABLE PostGradUser(
@@ -466,6 +466,7 @@ set @id=SCOPE_IDENTITY()
 set @name = CONCAT(@first_name,@last_name)
 insert into Examiner(id,name,fieldOfWork,isNational) values
 (@id,@name,@fieldOfWork,@isNational)
+select * from PostGradUser
 go
 create proc supervisorRegister
 @first_name varchar(20),
@@ -514,8 +515,12 @@ end
 go
 create proc addMobile
 @ID varchar(20),
-@mobile_number varchar(20)
+@mobile_number varchar(20),
+@found bit output
 as
+if(exists(select * from GUCStudentPhoneNumber where id=@id union
+(select * from NonGUCStudentPhoneNumber where id=@id))) set @found=1
+else set @found=0
 begin
 if @ID is not null and @mobile_number is not null
 begin

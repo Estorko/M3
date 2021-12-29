@@ -17,16 +17,6 @@ namespace M3
 
         }
 
-        protected void TextBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         protected void login(object sender, EventArgs e)
         {
             String connStr =WebConfigurationManager.ConnectionStrings["PostGradOffice"].ToString();
@@ -47,12 +37,12 @@ namespace M3
             conn.Close();
             if (success.Value.ToString() == "1")
             {
-                Response.Write("TRUE");
+                Session["user"] = email;
+                //Response.Write("TRUE");
+                Response.Write(Session["user"].ToString());
                 //Response.Redirect
             }
             else Response.Write("False");
-        
-
         }
     }
 }
