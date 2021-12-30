@@ -13,5 +13,30 @@ namespace M3
         {
 
         }
+
+        protected void Profile_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void Theses_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void Grades_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void pReport_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void Publication_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
