@@ -30,17 +30,25 @@ namespace M3
             getID.Parameters.Add(new SqlParameter("@email", email));
             SqlParameter id = getID.Parameters.Add("@id", SqlDbType.Int);
             id.Direction=ParameterDirection.Output;
-            ViewProfile.Parameters.Add(new SqlParameter("@sid", id.Value));
             conn.Open();
             getID.ExecuteNonQuery();
+            ViewProfile.Parameters.Add(new SqlParameter("@sid", id.Value));
             ViewProfile.ExecuteNonQuery();
             SqlDataReader rdr = ViewProfile.ExecuteReader(CommandBehavior.CloseConnection);
             while (rdr.Read())
             {
-                String Id = rdr.GetString(rdr.GetOrdinal("id"));
+                int Id = rdr.GetInt32(rdr.GetOrdinal("id"));
+                String pass = rdr.GetString(rdr.GetOrdinal("password"));
+                String first_Name = rdr.GetString(rdr.GetOrdinal("firstName"));
+                String last_Name = rdr.GetString(rdr.GetOrdinal("lastName"));
                 Label i_d = new Label();
-                i_d.Text = Id;
+                Label mail = new Label();
+                Label password = new Label();
+                i_d.Text = "ID: " + Id.ToString();
+                mail.Text = "Email: " + email;
+                password.Text = "Password: " + pass;
                 Output.Controls.Add(i_d);
+                Output.Controls.Add(mail);
             }
 
 
