@@ -7,20 +7,18 @@
     <title></title>
 </head>
 <body>
-    <div style='float:left'>
-    <form id="buttons" runat="server">
-        <div>
-            <asp:Button ID="Profile" runat="server" Text="View Profile" OnClick="Profile_Click" />
+    <form id="Output" runat="server">
+        <div style="float:right">
             <asp:Button ID="Theses" runat="server" Text="List Theses" OnClick="Theses_Click" />
+            <br />
+            <asp:Button ID="View_Profile" runat="server" Text="View Profile" OnClick="Profile_Click" />
+            <br />
             <asp:Button ID="Grades" runat="server" Text="List Grades" OnClick="Grades_Click" />
+            <br />
             <asp:Button ID="pReport" runat="server" Text="Add Progress Report" OnClick="pReport_Click" />
-            <asp:Button ID="Publication" runat="server" Text="Add Publication" OnClick="Publication_Click" />
+            <br />
+            <asp:Button ID="Publication" runat="server" Text="Add Publication" OnClick="Publication_Click"/>
         </div>
     </form>
-    </div>
-    <div style='float:right'>
-        <form>
-        </form>
-    </div>
-</body>
+    </body>
 </html>

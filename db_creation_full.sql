@@ -429,6 +429,12 @@ INSERT INTO ThesisHasPublication (serialNo, pubid)values(5,4)
 INSERT INTO ThesisHasPublication (serialNo, pubid)values(3,5)
 select * from ThesisHasPublication
 go
+create proc getID
+@email varchar (20),
+@id int output
+as
+set @id =(select id from PostGradUser where email=@email)
+go
 create proc studentRegister
 @first_name varchar(20),
 @last_name varchar(20),

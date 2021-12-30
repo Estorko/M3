@@ -15,22 +15,13 @@ namespace M3
     {
 
         /// <summary>
-        /// buttons control.
+        /// Output control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm buttons;
-
-        /// <summary>
-        /// Profile control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Profile;
+        protected global::System.Web.UI.HtmlControls.HtmlForm Output;
 
         /// <summary>
         /// Theses control.
@@ -40,6 +31,15 @@ namespace M3
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Theses;
+
+        /// <summary>
+        /// View_Profile control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button View_Profile;
 
         /// <summary>
         /// Grades control.

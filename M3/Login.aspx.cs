@@ -38,11 +38,13 @@ namespace M3
             if (success.Value.ToString() == "1")
             {
                 Session["user"] = email;
-                //Response.Write("TRUE");
-                Response.Write(Session["user"].ToString());
-                //Response.Redirect
+                if (type.Value.ToString() == "0")
+                    Response.Redirect("Student_Main.aspx");
+                //else if(type.Value.ToString()=="1")
+                //else if (type.Value.ToString()=="2")
+                //else if (type.Value.ToString()=="3")
             }
-            else Response.Write("False");
+            else Response.Write("Wrong password or email !");
         }
     }
 }
