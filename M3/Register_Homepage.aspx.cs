@@ -14,15 +14,11 @@ namespace M3
 
         }
 
-        protected void GUCianRegister(object sender, EventArgs e)
+        protected void StudentRegister(object sender, EventArgs e)
         {
-            Response.Redirect("Register_GucianStudent.aspx");     
+            Response.Redirect("Register_Student.aspx");     
         }
-        protected void NonGUCianRegister(object sender, EventArgs e)
-        {
-            Response.Redirect("Register_NonGucianStudent.aspx");     
-            
-        } protected void SupervisorRegister(object sender, EventArgs e)
+        protected void SupervisorRegister(object sender, EventArgs e)
         {
             Response.Redirect("Register_Supervisor.aspx");     
             

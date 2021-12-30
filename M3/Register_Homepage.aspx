@@ -23,9 +23,7 @@ div {text-align: center;}
             Registration<br />
         </div>
         <br />
-        <asp:Button ID="GUCian" runat="server" OnClick="GUCianRegister" Text="GUCian" />
-         &nbsp
-        <asp:Button ID="NonGUCian" runat="server" OnClick="NonGUCianRegister" Text="NonGUCian" />
+        <asp:Button ID="student" runat="server" OnClick="StudentRegister" Text="Student" />
          &nbsp
         <asp:Button ID="Supervisor" runat="server" OnClick="SupervisorRegister" Text="Supervisor" />
          &nbsp

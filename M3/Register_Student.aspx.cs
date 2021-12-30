@@ -10,7 +10,7 @@ using System.Web.UI.WebControls;
 
 namespace M3
 {
-    public partial class Register_NonGucianStudent : System.Web.UI.Page
+    public partial class Register_GucianStudent : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -29,22 +29,24 @@ namespace M3
             String email = Email.Text;
             String address = Address.Text;
             int Gucian = 0;
+            if (Yes.Checked)
+                Gucian = 1;
             int type = 0;
-            SqlCommand NonGucianRegister = new SqlCommand("studentRegister", conn);
+            SqlCommand GucianRegister = new SqlCommand("studentRegister", conn);
             SqlCommand userExits = new SqlCommand("userLogin", conn);
-            NonGucianRegister.CommandType = CommandType.StoredProcedure;
+            GucianRegister.CommandType = CommandType.StoredProcedure;
             userExits.CommandType = CommandType.StoredProcedure;
             userExits.Parameters.Add(new SqlParameter("@email", email));
             userExits.Parameters.Add(new SqlParameter("@password", password));
             userExits.Parameters.Add(new SqlParameter("@type", type));
             SqlParameter success = userExits.Parameters.Add("@success", SqlDbType.Int);
-            NonGucianRegister.Parameters.Add(new SqlParameter("@first_name", firstName));
-            NonGucianRegister.Parameters.Add(new SqlParameter("@last_name", lastName));
-            NonGucianRegister.Parameters.Add(new SqlParameter("@password", password));
-            NonGucianRegister.Parameters.Add(new SqlParameter("@faculty", faculty));
-            NonGucianRegister.Parameters.Add(new SqlParameter("@Gucian", Gucian));
-            NonGucianRegister.Parameters.Add(new SqlParameter("@email", email));
-            NonGucianRegister.Parameters.Add(new SqlParameter("@address", address));
+            GucianRegister.Parameters.Add(new SqlParameter("@first_name", firstName));
+            GucianRegister.Parameters.Add(new SqlParameter("@last_name", lastName));
+            GucianRegister.Parameters.Add(new SqlParameter("@password", password));
+            GucianRegister.Parameters.Add(new SqlParameter("@faculty", faculty));
+            GucianRegister.Parameters.Add(new SqlParameter("@Gucian", Gucian));
+            GucianRegister.Parameters.Add(new SqlParameter("@email", email));
+            GucianRegister.Parameters.Add(new SqlParameter("@address", address));
             success.Direction = ParameterDirection.Output;
 
             conn.Open();
@@ -55,14 +57,14 @@ namespace M3
                 Response.Text = "NO DATA ENTERED !";
             else
             {
-                NonGucianRegister.ExecuteNonQuery();
+                GucianRegister.ExecuteNonQuery();
                 Response.Text = "Success !, User Created";
                 conn.Close();
-                //   Response.Redirect("Student_Main.aspx");
+             //   Response.Redirect("Student_Main.aspx");
             }
             conn.Close();
         }
 
-
+    
     }
 }

@@ -1,4 +1,4 @@
-﻿<%@ Page AutoEventWireup="true" CodeBehind="Register_GucianStudent.aspx.cs" Inherits="M3.Register_GucianStudent" Language="C#"%>
+﻿<%@ Page AutoEventWireup="true" CodeBehind="Register_Student.aspx.cs" Inherits="M3.Register_GucianStudent" Language="C#"%>
 
 <!DOCTYPE html>
 
@@ -43,6 +43,9 @@ label {
             <asp:TextBox ID="Address" runat="server"></asp:TextBox>
             <br />
             <br />
+            <label>Gucian</label>
+            <asp:RadioButton ID="Yes" GroupName="Gucian" runat="server" Text="Yes"/>
+            <asp:RadioButton ID="No"  GroupName="Gucian" runat="server" Text="No"/>
         </div>
         <asp:Button ID="Submit" runat="server" OnClick="Register" Text="Submit" />
         <p>

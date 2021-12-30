@@ -70,9 +70,8 @@
     <Content Include="AddPhoneNumber.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Register_Examiner.aspx" />
-    <Content Include="Register_GucianStudent.aspx" />
+    <Content Include="Register_Student.aspx" />
     <Content Include="Register_Homepage.aspx" />
-    <Content Include="Register_NonGucianStudent.aspx" />
     <Content Include="Register_Supervisor.aspx" />
     <Content Include="Student_Main.aspx" />
     <Content Include="Web.config" />
@@ -100,12 +99,12 @@
     <Compile Include="Register_Examiner.aspx.designer.cs">
       <DependentUpon>Register_Examiner.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Register_GucianStudent.aspx.cs">
-      <DependentUpon>Register_GucianStudent.aspx</DependentUpon>
+    <Compile Include="Register_Student.aspx.cs">
+      <DependentUpon>Register_Student.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Register_GucianStudent.aspx.designer.cs">
-      <DependentUpon>Register_GucianStudent.aspx</DependentUpon>
+    <Compile Include="Register_Student.aspx.designer.cs">
+      <DependentUpon>Register_Student.aspx</DependentUpon>
     </Compile>
     <Compile Include="Register_Homepage.aspx.cs">
       <DependentUpon>Register_Homepage.aspx</DependentUpon>
@@ -113,13 +112,6 @@
     </Compile>
     <Compile Include="Register_Homepage.aspx.designer.cs">
       <DependentUpon>Register_Homepage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Register_NonGucianStudent.aspx.cs">
-      <DependentUpon>Register_NonGucianStudent.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Register_NonGucianStudent.aspx.designer.cs">
-      <DependentUpon>Register_NonGucianStudent.aspx</DependentUpon>
     </Compile>
     <Compile Include="Register_Supervisor.aspx.cs">
       <DependentUpon>Register_Supervisor.aspx</DependentUpon>
