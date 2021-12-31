@@ -99,8 +99,8 @@ namespace M3
             {
                 for (int i = 0; i < res.Columns.Count; i++)
                 {
-                    outp.Text+=(res.Columns[i].ColumnName.ToUpper() + ": "+(res.Rows[j].ItemArray[i]+"<br>"));
-                    if (i+1 >= res.Columns.Count)
+                    outp.Text += (res.Columns[i].ColumnName.ToUpper() + ": " + (res.Rows[j].ItemArray[i] + "<br>"));
+                    if (i + 1 >= res.Columns.Count)
                         outp.Text += "<br>";
                 }
             }
