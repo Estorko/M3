@@ -5,6 +5,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    <style type="text/css">
+        #Output {
+            width: 1151px;
+            margin-left: 48px;
+            margin-top: 39px;
+        }
+    </style>
  </head>
 <body>
     <form id="Output" runat="server">

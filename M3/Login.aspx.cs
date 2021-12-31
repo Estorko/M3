@@ -34,10 +34,17 @@ namespace M3
             type.Direction = ParameterDirection.Output;
             conn.Open();
             loginproc.ExecuteNonQuery();
-            conn.Close();
             if (success.Value.ToString() == "1")
             {
-                Session["user"] = email;
+                Session["mail"] = email;
+                SqlCommand getID = new SqlCommand("getID", conn);
+                getID.CommandType = CommandType.StoredProcedure;
+                getID.Parameters.Add(new SqlParameter("@email", email));
+                SqlParameter id = getID.Parameters.Add("@id", SqlDbType.Int);
+                id.Direction = ParameterDirection.Output;
+                getID.ExecuteNonQuery();
+                Session["ID"] = id.Value;
+                conn.Close();
                 if (type.Value.ToString() == "0")
                     Response.Redirect("Student_Main.aspx");
                 //else if(type.Value.ToString()=="1")

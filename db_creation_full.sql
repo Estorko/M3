@@ -327,6 +327,7 @@ insert into Thesis (field,type,title,startDate,grade)values ('Law','PhD','Crimin
 select * from Thesis;
 -- GucianStudent Register Thesis tables
 insert into GUCianStudentRegisterThesis values (1,13,1);
+insert into GUCianStudentRegisterThesis values (1,13,17);
 insert into GUCianStudentRegisterThesis values (2,13,2);
 insert into GUCianStudentRegisterThesis values (3,14,3);
 insert into GUCianStudentRegisterThesis values (4,14,4);
@@ -555,6 +556,18 @@ As
 Select
 serialNumber,field,type,title,startDate,endDate,defenseDate,years,grade,payment_id,noOfExtensions
 From Thesis
+go
+create proc ViewStudentThesis
+@sid int
+as
+if(exists(select * from GUCianStudentRegisterThesis where sid=@sid))
+select t.serialNumber,t.field,t.type,t.title,t.startDate,t.endDate,t.defenseDate,
+t.grade,t.noOfExtensions from Thesis t inner join GUCianStudentRegisterThesis gt
+on t.serialNumber=gt.serial_no where sid=@sid
+else
+select serialNumber,field,type,title,startDate,endDate,defenseDate,years,
+grade,payment_id,noOfExtensions from Thesis inner join NonGUCianStudentRegisterThesis gt
+on serialNumber=gt.serial_no where sid=@sid
 go
 CREATE Proc AdminViewOnGoingTheses
 @thesesCount int output
@@ -910,7 +923,8 @@ if(exists(
 select * from GucianStudent where id = @studentId
 ))
 begin
-select G.*,P.email
+select G.firstName,G.lastName,g.type,g.faculty,g.address,g.GPA,g.undergradID
+,P.email
 from GucianStudent G
 inner join PostGradUser P
 on G.id = P.id
@@ -918,7 +932,7 @@ where G.id = @studentId
 end
 else
 begin
-select N.*,P.email
+select N.firstName,n.lastName,n.type,n.faculty,n.address,n.GPA,P.email
 from NonGucianStudent N
 inner join PostGradUser P
 on N.id = P.id
