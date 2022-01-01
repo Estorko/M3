@@ -44,7 +44,7 @@ label {
             <br />
         <asp:Button ID="Submit" runat="server" OnClick="Register" Text="Submit" Height="25px" />
         <p>
-            <asp:Label ID="Response" runat="server" Text=""></asp:Label>
+            <asp:Label ID="Result" runat="server" Text=""></asp:Label>
         </p>
     </form>
 </body>

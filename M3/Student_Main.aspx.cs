@@ -13,10 +13,6 @@ namespace M3
 {
     public partial class Student_Main : System.Web.UI.Page
     {
-        public Student_Main()
-        {
-
-        }
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -109,7 +105,21 @@ namespace M3
 
         protected void Grades_Click(object sender, EventArgs e)
         {
+            String gucian = Session["Gucian"].ToString();
+            String id = Session["ID"].ToString();
+            if(gucian=="0")
+            {
+                String connStr = WebConfigurationManager.ConnectionStrings["PostGradOffice"].ToString();
+                //create new connection
+                SqlConnection conn = new SqlConnection(connStr);
+                SqlCommand listcourse = new SqlCommand("ViewCoursesGrades", conn);
+                listcourse.Parameters.Add(new SqlParameter("@studentID", id));
+                listcourse.CommandType = CommandType.StoredProcedure;
+                //conn.Open
 
+               
+                //Output.Controls.Add(outp);
+            }
         }
 
         protected void pReport_Click(object sender, EventArgs e)

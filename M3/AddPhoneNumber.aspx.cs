@@ -33,13 +33,13 @@ namespace M3
 
             conn.Open();
             if (id == "" || p_number == "")
-                Response.Text = "No Data entered !";
+                Result.Text = "No Data entered !";
             else if (found.Value.ToString() == "1")
-                Response.Text = "Phone Number already added !";
+                Result.Text = "Phone Number already added !";
             else
             {
                 AddPhone.ExecuteNonQuery();
-                Response.Text = "Success !, Mobile Number added";
+                Result.Text = "Success !, Mobile Number added";
             }
             conn.Close();
 

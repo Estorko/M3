@@ -14,7 +14,6 @@ namespace M3
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
         }
 
         protected void Register(object sender, EventArgs e)
@@ -32,35 +31,48 @@ namespace M3
             if (Yes.Checked)
                 Gucian = 1;
             int type = 0;
-            SqlCommand GucianRegister = new SqlCommand("studentRegister", conn);
-            SqlCommand userExits = new SqlCommand("userLogin", conn);
-            GucianRegister.CommandType = CommandType.StoredProcedure;
-            userExits.CommandType = CommandType.StoredProcedure;
-            userExits.Parameters.Add(new SqlParameter("@email", email));
-            userExits.Parameters.Add(new SqlParameter("@password", password));
-            userExits.Parameters.Add(new SqlParameter("@type", type));
-            SqlParameter success = userExits.Parameters.Add("@success", SqlDbType.Int);
-            GucianRegister.Parameters.Add(new SqlParameter("@first_name", firstName));
-            GucianRegister.Parameters.Add(new SqlParameter("@last_name", lastName));
-            GucianRegister.Parameters.Add(new SqlParameter("@password", password));
-            GucianRegister.Parameters.Add(new SqlParameter("@faculty", faculty));
-            GucianRegister.Parameters.Add(new SqlParameter("@Gucian", Gucian));
-            GucianRegister.Parameters.Add(new SqlParameter("@email", email));
-            GucianRegister.Parameters.Add(new SqlParameter("@address", address));
+            SqlCommand studentRegister = new SqlCommand("studentRegister", conn);
+            SqlCommand userExists = new SqlCommand("userLogin", conn);
+            studentRegister.CommandType = CommandType.StoredProcedure;
+            userExists.CommandType = CommandType.StoredProcedure;
+            userExists.Parameters.Add(new SqlParameter("@email", email));
+            userExists.Parameters.Add(new SqlParameter("@password", password));
+            userExists.Parameters.Add(new SqlParameter("@type", type));
+            SqlParameter success = userExists.Parameters.Add("@success", SqlDbType.Int);
+            studentRegister.Parameters.Add(new SqlParameter("@first_name", firstName));
+            studentRegister.Parameters.Add(new SqlParameter("@last_name", lastName));
+            studentRegister.Parameters.Add(new SqlParameter("@password", password));
+            studentRegister.Parameters.Add(new SqlParameter("@faculty", faculty));
+            studentRegister.Parameters.Add(new SqlParameter("@Gucian", Gucian));
+            studentRegister.Parameters.Add(new SqlParameter("@email", email));
+            studentRegister.Parameters.Add(new SqlParameter("@address", address));
             success.Direction = ParameterDirection.Output;
+            SqlCommand getID = new SqlCommand("getID", conn);
+            getID.CommandType = CommandType.StoredProcedure;
+            getID.Parameters.Add(new SqlParameter("@email", email));
+            SqlParameter id = getID.Parameters.Add("@id", SqlDbType.Int);
+            id.Direction = ParameterDirection.Output;
 
             conn.Open();
-            userExits.ExecuteNonQuery();
+            userExists.ExecuteNonQuery();
             if (success.Value.ToString() == "1")
-                Response.Text = "Invalid Registration, User already exists !";
+                Result.Text = "Invalid Registration, User already exists !";
             else if (firstName == "")
-                Response.Text = "NO DATA ENTERED !";
+                Result.Text = "NO DATA ENTERED !";
             else
             {
-                GucianRegister.ExecuteNonQuery();
-                Response.Text = "Success !, User Created";
-                conn.Close();
-             //   Response.Redirect("Student_Main.aspx");
+                studentRegister.ExecuteNonQuery();
+                getID.ExecuteNonQuery();
+                Session["ID"] = id.Value;
+                Session["mail"] = email;
+                Session["Gucian"] = Gucian;
+                Result.Text = "Success !, User Created";
+                userExists.ExecuteNonQuery();
+                if (success.Value.ToString() == "1")
+                {
+                    Response.Redirect("Student_Main.aspx");
+                    conn.Close();
+                }
             }
             conn.Close();
         }

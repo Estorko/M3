@@ -44,6 +44,12 @@ namespace M3
                 id.Direction = ParameterDirection.Output;
                 getID.ExecuteNonQuery();
                 Session["ID"] = id.Value;
+                SqlCommand Gucian = new SqlCommand("checkType", conn);
+                Gucian.Parameters.Add(new SqlParameter("@id", id.Value));
+                SqlParameter gucian = Gucian.Parameters.Add("@type", SqlDbType.Int);
+                gucian.Direction = ParameterDirection.Output;
+                Gucian.ExecuteNonQuery();
+                Session["Gucian"] = gucian.Value;
                 conn.Close();
                 if (type.Value.ToString() == "0")
                     Response.Redirect("Student_Main.aspx");

@@ -46,13 +46,13 @@ namespace M3
             conn.Open();
             userExits.ExecuteNonQuery();
             if (success.Value.ToString() == "1")
-                Response.Text = "Invalid Registration, User already exists !";
+                Result.Text = "Invalid Registration, User already exists !";
             else if (firstName == "" || lastName == "" || password == "" || email == "")
-                Response.Text = "NO DATA ENTERED !";
+                Result.Text = "NO DATA ENTERED !";
             else
             {
                 SupervisorRegister.ExecuteNonQuery();
-                Response.Text = "Success !, User Created";
+                Result.Text = "Success !, User Created";
                 conn.Close();
                 //   Response.Redirect("Student_Main.aspx");
             }

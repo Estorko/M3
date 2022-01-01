@@ -68,12 +68,19 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AddPhoneNumber.aspx" />
+    <Content Include="Admin.aspx" />
+    <Content Include="issuepayment.aspx" />
+    <Content Include="issuethesis.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="ongoingthesis.aspx" />
     <Content Include="Register_Examiner.aspx" />
     <Content Include="Register_Student.aspx" />
     <Content Include="Register_Homepage.aspx" />
     <Content Include="Register_Supervisor.aspx" />
     <Content Include="Student_Main.aspx" />
+    <Content Include="update.aspx" />
+    <Content Include="Viewallsup.aspx" />
+    <Content Include="Viewallthesis.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -84,12 +91,40 @@
     <Compile Include="AddPhoneNumber.aspx.designer.cs">
       <DependentUpon>AddPhoneNumber.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin.aspx.cs">
+      <DependentUpon>Admin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin.aspx.designer.cs">
+      <DependentUpon>Admin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="issuepayment.aspx.cs">
+      <DependentUpon>issuepayment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="issuepayment.aspx.designer.cs">
+      <DependentUpon>issuepayment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="issuethesis.aspx.cs">
+      <DependentUpon>issuethesis.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="issuethesis.aspx.designer.cs">
+      <DependentUpon>issuethesis.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ongoingthesis.aspx.cs">
+      <DependentUpon>ongoingthesis.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ongoingthesis.aspx.designer.cs">
+      <DependentUpon>ongoingthesis.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Register_Examiner.aspx.cs">
@@ -126,6 +161,27 @@
     </Compile>
     <Compile Include="Student_Main.aspx.designer.cs">
       <DependentUpon>Student_Main.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="update.aspx.cs">
+      <DependentUpon>update.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="update.aspx.designer.cs">
+      <DependentUpon>update.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Viewallsup.aspx.cs">
+      <DependentUpon>Viewallsup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Viewallsup.aspx.designer.cs">
+      <DependentUpon>Viewallsup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Viewallthesis.aspx.cs">
+      <DependentUpon>Viewallthesis.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Viewallthesis.aspx.designer.cs">
+      <DependentUpon>Viewallthesis.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

@@ -1,4 +1,4 @@
-﻿--CREATE DATABASE PostGradOffice;
+﻿CREATE DATABASE PostGradOffice;
 go
 use PostGradOffice;
 CREATE TABLE PostGradUser(
@@ -18,7 +18,7 @@ lastName varchar(20),
 type varchar(3),
 faculty varchar(30),
 address varchar(50),
-GPA decimal(3,2),
+GPA decimal(3,2) default 0,
 undergradID int
 )
 CREATE TABLE NonGucianStudent(
@@ -29,7 +29,7 @@ lastName varchar(20),
 type varchar(3),
 faculty varchar(30),
 address varchar(50),
-GPA decimal(3,2),
+GPA decimal(3,2) default 0,
 )
 CREATE TABLE GUCStudentPhoneNumber(
 id int primary key foreign key references GucianStudent on delete cascade
@@ -168,6 +168,7 @@ pubid int foreign key references Publication on delete cascade on update
 cascade,
 primary key(serialNo,pubid))
 go
+
 Set IDENTITY_INSERT PostGradUser ON
 insert into PostGradUser (id,email,password) values (1,'anthony@gmail.com','u8nN}B');
 insert into PostGradUser (id,email,password) values (2,'ashraf@gmail.com','n6B~/J');
@@ -436,27 +437,24 @@ create proc getID
 as
 set @id =(select id from PostGradUser where email=@email)
 go
-create proc studentRegister
+create proc studentRegister 
 @first_name varchar(20),
 @last_name varchar(20),
 @password varchar(20),
 @faculty varchar(20),
 @Gucian bit,
-@email varchar(50),
+@email varchar(50), 
 @address varchar(50)
 as
-begin
-insert into PostGradUser(email,password)
-values(@email,@password)
-declare @id int
-SELECT @id=SCOPE_IDENTITY()
-if(@Gucian=1)
-insert into GucianStudent(id,firstName,lastName,faculty,address)
-values(@id,@first_name,@last_name,@faculty,@address)
-else
-insert into NonGucianStudent(id,firstName,lastName,faculty,address)
-values(@id,@first_name,@last_name,@faculty,@address)
-end
+declare @Post_index int
+declare @undergrad_id numeric
+set @undergrad_id= CONVERT(NUMERIC(12,0),RAND() * 9999) + 10000 
+insert into PostGradUser values (@email,@password)
+set @Post_index= Scope_identity();
+if @Gucian=1 insert into GucianStudent (id,firstName,lastName,type,faculty,address,undergradID) 
+    values (@Post_index,@first_name,@last_name,@Gucian,@faculty,@address,@undergrad_id)
+else insert into NonGucianStudent (id,firstName,lastName,type,faculty,address) 
+    values (@Post_index,@first_name,@last_name,@Gucian,@faculty,@address)
 go
 create proc examinerRegister
 @first_name varchar(20),
@@ -496,7 +494,8 @@ Create proc userLogin
 @email varchar(20),
 @password varchar(20),
 @success bit output,
-@type int output
+@type int output,
+@Gucian bit output
 as
 declare @id int
 begin
@@ -505,6 +504,8 @@ select email,password from PostGradUser where email=@email and password=@passwor
 begin
 set @id=(select id from PostGradUser where email=@email)
 set @success =1
+if(exists(select id from GucianStudent where id=@id))
+set @
 -- check user type 0-->Student,1-->Admin,2-->Supervisor ,3-->Examiner
 if exists(select id from GucianStudent where id=@id union select id from
 NonGucianStudent where id=@id )
@@ -916,14 +917,19 @@ update ExaminerEvaluateDefense
 set comment = @comments
 where serialNo = @ThesisSerialNo and date = @DefenseDate
 go
+create proc checkType
+@id int,
+@type int output
+as
+if(exists(select * from GucianStudent where id=@id)) set @type=1
+else set @type=0;
+go
 create proc viewMyProfile
 @studentId int
 as
-if(exists(
-select * from GucianStudent where id = @studentId
-))
+if(exists(select * from GucianStudent where id = @studentId))
 begin
-select G.firstName,G.lastName,g.type,g.faculty,g.address,g.GPA,g.undergradID
+select G.firstName,G.lastName,G.type,G.faculty,G.address,G.GPA,G.undergradID
 ,P.email
 from GucianStudent G
 inner join PostGradUser P
@@ -932,11 +938,11 @@ where G.id = @studentId
 end
 else
 begin
-select N.firstName,n.lastName,n.type,n.faculty,n.address,n.GPA,P.email
-from NonGucianStudent N
+select n.firstName,n.lastName,n.type,n.faculty,n.address,n.GPA,P.email
+from NonGucianStudent n
 inner join PostGradUser P
-on N.id = P.id
-where N.id = @studentId
+on n.id = P.id
+where n.id = @studentId
 end
 go
 create proc editMyProfile
@@ -967,9 +973,8 @@ go
 create proc ViewCoursesGrades
 @studentID int
 as
-select grade
-from NonGucianStudentTakeCourse
-where sid = @studentID
+select c.code as'Course Code',nt.grade as 'Grade',c.creditHours 'Credit Hours' from Course c inner join 
+NonGucianStudentTakeCourse nt on c.id=nt.cid where nt.sid=@studentID
 go
 create proc ViewCoursePaymentsInstall
 @studentID int
