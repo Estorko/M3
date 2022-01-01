@@ -306,7 +306,7 @@ select * from Installment;
 -------------------------------------------------------------------------------------
 --	Thesis (8 Master & 8 PhD)
 --	Masters
-insert into Thesis (field,type,title,startDate,grade)values ('Biology','Master','Climate change','8/11/2019',1.8);
+insert into Thesis (field,type,title,startDate,endDate,grade)values ('Biology','Master','Climate change','8/11/2019','8/11/2023',1.8);
 insert into Thesis (field,type,title,startDate,defenseDate,grade,payment_id) values ('Economics','Master','Equality','7/9/2015','2/9/2016',2.1,1);
 insert into Thesis (field,type,title,startDate,endDate,grade,payment_id,noOfExtensions)values('Business','Master','Stocks','8/1/2017','8/2/2020',1.0,2,2);
 insert into Thesis (field,type,title,startDate,grade,payment_id) values ('Law','Master','Courts','4/10/2017',2.0,3);
@@ -490,24 +490,23 @@ set @name = CONCAT(@first_name,@last_name)
 insert into Supervisor(id,name,faculty) values(@id,@name,@faculty)
 end
 go
+select * from PostGradUser
+select * from NonGucianStudent
+drop proc userLogin
 Create proc userLogin
 @email varchar(20),
 @password varchar(20),
 @success bit output,
-@type int output,
-@Gucian bit output
+@type int output
 as
 declare @id int
 begin
-if exists(
-select email,password from PostGradUser where email=@email and password=@password)
+if exists(select email,password from PostGradUser where email=@email and password=@password)
 begin
 set @id=(select id from PostGradUser where email=@email)
 set @success =1
-if(exists(select id from GucianStudent where id=@id))
-set @
 -- check user type 0-->Student,1-->Admin,2-->Supervisor ,3-->Examiner
-if exists(select id from GucianStudent where id=@id union select id from
+if exists(select id from GucianStudent where id=@id union select id from 
 NonGucianStudent where id=@id )
 set @type=0
 if exists(select id from Admin where id=@id)
@@ -554,9 +553,22 @@ WHERE @supId = s.id
 go
 CREATE Proc AdminViewAllTheses
 As
+select * from PostGradUser
 Select
 serialNumber,field,type,title,startDate,endDate,defenseDate,years,grade,payment_id,noOfExtensions
 From Thesis
+go
+create proc ViewStudentOngoingTheis
+@sid int
+as
+if(exists(select * from GUCianStudentRegisterThesis where sid=@sid))
+select t.serialNumber,t.field,t.type,t.title,t.startDate,t.endDate,t.defenseDate,
+t.grade,t.noOfExtensions from Thesis t inner join GUCianStudentRegisterThesis gt
+on t.serialNumber=gt.serial_no where sid=@sid and endDate > Convert(Date,CURRENT_TIMESTAMP)
+else
+select serialNumber,field,type,title,startDate,endDate,defenseDate,years,
+grade,payment_id,noOfExtensions from Thesis inner join NonGUCianStudentRegisterThesis gt
+on serialNumber=gt.serial_no where sid=@sid and endDate > Convert(Date,CURRENT_TIMESTAMP)
 go
 create proc ViewStudentThesis
 @sid int
@@ -917,13 +929,6 @@ update ExaminerEvaluateDefense
 set comment = @comments
 where serialNo = @ThesisSerialNo and date = @DefenseDate
 go
-create proc checkType
-@id int,
-@type int output
-as
-if(exists(select * from GucianStudent where id=@id)) set @type=1
-else set @type=0;
-go
 create proc viewMyProfile
 @studentId int
 as
@@ -1106,6 +1111,7 @@ insert into NonGUCianProgressReport
 values(@studentID,@progressReportNo,@progressReportDate,null,null,null,@thesisSerialNo,null)
 end
 go
+select * from GUCianProgressReport
 create proc FillProgressReport
 @thesisSerialNo int, @progressReportNo int, @state int, @description
 varchar(200),@studentID int
@@ -1149,6 +1155,12 @@ select eval
 from NonGUCianProgressReport
 where sid = @studentID and thesisSerialNumber = @thesisSerialNo and no =
 @progressReportNo
+go
+create proc getPubID
+@title varchar (20),
+@id int output
+as
+set @id=(select id from Publication where title=@title)
 go
 create proc addPublication
 @title varchar(50), @pubDate datetime, @host varchar(50), @place

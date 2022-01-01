@@ -53,6 +53,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
@@ -68,14 +69,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AddPhoneNumber.aspx" />
+    <Content Include="AddPublication.aspx" />
     <Content Include="Admin.aspx" />
+    <Content Include="FillProgressReport.aspx" />
     <Content Include="issuepayment.aspx" />
     <Content Include="issuethesis.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="ongoingthesis.aspx" />
     <Content Include="Register_Examiner.aspx" />
     <Content Include="Register_Student.aspx" />
-    <Content Include="Register_Homepage.aspx" />
     <Content Include="Register_Supervisor.aspx" />
     <Content Include="Student_Main.aspx" />
     <Content Include="update.aspx" />
@@ -91,12 +93,26 @@
     <Compile Include="AddPhoneNumber.aspx.designer.cs">
       <DependentUpon>AddPhoneNumber.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AddPublication.aspx.cs">
+      <DependentUpon>AddPublication.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddPublication.aspx.designer.cs">
+      <DependentUpon>AddPublication.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin.aspx.cs">
       <DependentUpon>Admin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Admin.aspx.designer.cs">
       <DependentUpon>Admin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FillProgressReport.aspx.cs">
+      <DependentUpon>FillProgressReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FillProgressReport.aspx.designer.cs">
+      <DependentUpon>FillProgressReport.aspx</DependentUpon>
     </Compile>
     <Compile Include="issuepayment.aspx.cs">
       <DependentUpon>issuepayment.aspx</DependentUpon>
@@ -140,13 +156,6 @@
     </Compile>
     <Compile Include="Register_Student.aspx.designer.cs">
       <DependentUpon>Register_Student.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Register_Homepage.aspx.cs">
-      <DependentUpon>Register_Homepage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Register_Homepage.aspx.designer.cs">
-      <DependentUpon>Register_Homepage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Register_Supervisor.aspx.cs">
       <DependentUpon>Register_Supervisor.aspx</DependentUpon>

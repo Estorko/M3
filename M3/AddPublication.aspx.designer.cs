@@ -11,7 +11,7 @@ namespace M3
 {
 
 
-    public partial class Login
+    public partial class AddPublication
     {
 
         /// <summary>
@@ -24,57 +24,57 @@ namespace M3
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// student control.
+        /// Title control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button student;
+        protected global::System.Web.UI.WebControls.TextBox Title;
 
         /// <summary>
-        /// Supervisor control.
+        /// PubDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Supervisor;
+        protected global::System.Web.UI.WebControls.TextBox PubDate;
 
         /// <summary>
-        /// Examiner control.
+        /// host control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Examiner;
+        protected global::System.Web.UI.WebControls.TextBox host;
 
         /// <summary>
-        /// Email control.
+        /// place control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Email;
+        protected global::System.Web.UI.WebControls.TextBox place;
 
         /// <summary>
-        /// password control.
+        /// Submit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox password;
+        protected global::System.Web.UI.WebControls.Button Submit;
 
         /// <summary>
-        /// sign_in control.
+        /// Result control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button sign_in;
+        protected global::System.Web.UI.WebControls.Label Result;
     }
 }
