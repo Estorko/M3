@@ -1111,7 +1111,6 @@ insert into NonGUCianProgressReport
 values(@studentID,@progressReportNo,@progressReportDate,null,null,null,@thesisSerialNo,null)
 end
 go
-select * from GUCianProgressReport
 create proc FillProgressReport
 @thesisSerialNo int, @progressReportNo int, @state int, @description
 varchar(200),@studentID int
