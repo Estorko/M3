@@ -1,6 +1,5 @@
 ﻿CREATE DATABASE PostGradOffice;
 go
-select * from PostGradUser
 use PostGradOffice;
 CREATE TABLE PostGradUser(
 id int primary key identity(1,1),
