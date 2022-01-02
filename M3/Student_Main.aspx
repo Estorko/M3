@@ -37,6 +37,9 @@
             <br />
             <br />
             <asp:Button ID="pReport" runat="server" Text="OnGoing Theses" OnClick="pReport_Click" />
+            <br />
+            <br />
+            <asp:Button ID="add_phone" runat="server" Text="Add Phone Number" OnClick="add_phoneNum" />
         </div>
     </form>
     </body>

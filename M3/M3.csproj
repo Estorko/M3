@@ -68,9 +68,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AddComments.aspx" />
+    <Content Include="AddDefenseGrade.aspx" />
     <Content Include="AddPhoneNumber.aspx" />
     <Content Include="AddPublication.aspx" />
     <Content Include="Admin.aspx" />
+    <Content Include="ExaminerEditInfo.aspx" />
+    <Content Include="ExaminerListAll.aspx" />
+    <Content Include="ExaminerSearch.aspx" />
+    <Content Include="Examiner_Main.aspx" />
     <Content Include="FillProgressReport.aspx" />
     <Content Include="issuepayment.aspx" />
     <Content Include="issuethesis.aspx" />
@@ -80,12 +86,36 @@
     <Content Include="Register_Student.aspx" />
     <Content Include="Register_Supervisor.aspx" />
     <Content Include="Student_Main.aspx" />
+    <Content Include="suprvisor.aspx" />
     <Content Include="update.aspx" />
+    <Content Include="view1.aspx" />
+    <Content Include="view11.aspx" />
+    <Content Include="view2.aspx" />
+    <Content Include="view22.aspx" />
+    <Content Include="view3.aspx" />
+    <Content Include="view32.aspx" />
+    <Content Include="view333.aspx" />
+    <Content Include="view44.aspx" />
+    <Content Include="view55.aspx" />
     <Content Include="Viewallsup.aspx" />
     <Content Include="Viewallthesis.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddComments.aspx.cs">
+      <DependentUpon>AddComments.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddComments.aspx.designer.cs">
+      <DependentUpon>AddComments.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AddDefenseGrade.aspx.cs">
+      <DependentUpon>AddDefenseGrade.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddDefenseGrade.aspx.designer.cs">
+      <DependentUpon>AddDefenseGrade.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AddPhoneNumber.aspx.cs">
       <DependentUpon>AddPhoneNumber.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -106,6 +136,34 @@
     </Compile>
     <Compile Include="Admin.aspx.designer.cs">
       <DependentUpon>Admin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ExaminerEditInfo.aspx.cs">
+      <DependentUpon>ExaminerEditInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ExaminerEditInfo.aspx.designer.cs">
+      <DependentUpon>ExaminerEditInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ExaminerListAll.aspx.cs">
+      <DependentUpon>ExaminerListAll.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ExaminerListAll.aspx.designer.cs">
+      <DependentUpon>ExaminerListAll.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ExaminerSearch.aspx.cs">
+      <DependentUpon>ExaminerSearch.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ExaminerSearch.aspx.designer.cs">
+      <DependentUpon>ExaminerSearch.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Examiner_Main.aspx.cs">
+      <DependentUpon>Examiner_Main.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Examiner_Main.aspx.designer.cs">
+      <DependentUpon>Examiner_Main.aspx</DependentUpon>
     </Compile>
     <Compile Include="FillProgressReport.aspx.cs">
       <DependentUpon>FillProgressReport.aspx</DependentUpon>
@@ -171,12 +229,82 @@
     <Compile Include="Student_Main.aspx.designer.cs">
       <DependentUpon>Student_Main.aspx</DependentUpon>
     </Compile>
+    <Compile Include="suprvisor.aspx.cs">
+      <DependentUpon>suprvisor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="suprvisor.aspx.designer.cs">
+      <DependentUpon>suprvisor.aspx</DependentUpon>
+    </Compile>
     <Compile Include="update.aspx.cs">
       <DependentUpon>update.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="update.aspx.designer.cs">
       <DependentUpon>update.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="view1.aspx.cs">
+      <DependentUpon>view1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="view1.aspx.designer.cs">
+      <DependentUpon>view1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="view11.aspx.cs">
+      <DependentUpon>view11.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="view11.aspx.designer.cs">
+      <DependentUpon>view11.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="view2.aspx.cs">
+      <DependentUpon>view2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="view2.aspx.designer.cs">
+      <DependentUpon>view2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="view22.aspx.cs">
+      <DependentUpon>view22.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="view22.aspx.designer.cs">
+      <DependentUpon>view22.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="view3.aspx.cs">
+      <DependentUpon>view3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="view3.aspx.designer.cs">
+      <DependentUpon>view3.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="view32.aspx.cs">
+      <DependentUpon>view32.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="view32.aspx.designer.cs">
+      <DependentUpon>view32.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="view333.aspx.cs">
+      <DependentUpon>view333.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="view333.aspx.designer.cs">
+      <DependentUpon>view333.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="view44.aspx.cs">
+      <DependentUpon>view44.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="view44.aspx.designer.cs">
+      <DependentUpon>view44.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="view55.aspx.cs">
+      <DependentUpon>view55.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="view55.aspx.designer.cs">
+      <DependentUpon>view55.aspx</DependentUpon>
     </Compile>
     <Compile Include="Viewallsup.aspx.cs">
       <DependentUpon>Viewallsup.aspx</DependentUpon>

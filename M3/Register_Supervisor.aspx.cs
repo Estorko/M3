@@ -54,7 +54,7 @@ namespace M3
                 SupervisorRegister.ExecuteNonQuery();
                 Result.Text = "Success !, User Created";
                 conn.Close();
-                //   Response.Redirect("Student_Main.aspx");
+                   Response.Redirect("suprvisor.aspx");
             }
             conn.Close();
         }

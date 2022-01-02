@@ -26,7 +26,6 @@
         <br />
         <br />
         <asp:Button ID="Button7" runat="server" Text="issue thesis payment" OnClick="Button7_Click" />
-        <br />
     </form>
 </body>
 </html>

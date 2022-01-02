@@ -15,7 +15,7 @@ namespace M3
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Session["userType"] = 0;
         }
         protected void GridView2_RowCommand(object sender, GridViewCommandEventArgs e)
         {
@@ -138,8 +138,9 @@ namespace M3
             GridView2.DataBind();
             conn.Close();
         }
-
-
-        
+        protected void add_phoneNum(object sender, EventArgs e)
+        {
+            Response.Redirect("AddPhoneNumber.aspx");
+        }
     }
 }

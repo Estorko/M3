@@ -47,7 +47,6 @@ namespace M3
             ExaminerRegister.Parameters.Add(new SqlParameter("@email", email));
             ExaminerRegister.Parameters.Add(new SqlParameter("@isNational", is_National));
             success.Direction = ParameterDirection.Output;
-
             conn.Open();
             userExits.ExecuteNonQuery();
             if (success.Value.ToString() == "1")
@@ -60,7 +59,7 @@ namespace M3
                 ExaminerRegister.ExecuteNonQuery();
                 Result.Text = "Success !, User Created";
                 conn.Close();
-                //   Response.Redirect("Student_Main.aspx");
+                   Response.Redirect("Examiner_Main.aspx");
             }
             conn.Close();
         }

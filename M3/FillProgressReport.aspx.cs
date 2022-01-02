@@ -43,15 +43,20 @@ namespace M3
             fillPR.Parameters.Add(new SqlParameter("@state", State));
             fillPR.Parameters.Add(new SqlParameter("@description", desc));
             conn.Open();
-            addPR.ExecuteNonQuery();
-            fillPR.ExecuteNonQuery();
-            conn.Close();
-            string message = "Progress Report Number:"+ R_number +
-                "has been added to the ongoing Thesis with serial Number: " + Snum;
-            string t = "";
-            DialogResult result = MessageBox.Show(message, t);
-            if (result == DialogResult.OK)
-                Response.Redirect("Student_Main.aspx");
+            if (Date == "" || R_number == "" || State == "" || desc == "")
+                Result.Text = "NO DATA ENTERED ! or MISSING DATA";
+            else
+            {
+                addPR.ExecuteNonQuery();
+                fillPR.ExecuteNonQuery();
+                conn.Close();
+                string message = "Progress Report Number: "+ R_number+
+                    "has been added to the ongoing Thesis with serial Number: "+ Snum;
+                string t = "";
+                DialogResult result = MessageBox.Show(message, t);
+                if (result == DialogResult.OK)
+                    Response.Redirect("Student_Main.aspx");
+            }
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿CREATE DATABASE PostGradOffice;
 go
+select * from PostGradUser
 use PostGradOffice;
 CREATE TABLE PostGradUser(
 id int primary key identity(1,1),
@@ -168,7 +169,6 @@ pubid int foreign key references Publication on delete cascade on update
 cascade,
 primary key(serialNo,pubid))
 go
-
 Set IDENTITY_INSERT PostGradUser ON
 insert into PostGradUser (id,email,password) values (1,'anthony@gmail.com','u8nN}B');
 insert into PostGradUser (id,email,password) values (2,'ashraf@gmail.com','n6B~/J');
@@ -490,9 +490,6 @@ set @name = CONCAT(@first_name,@last_name)
 insert into Supervisor(id,name,faculty) values(@id,@name,@faculty)
 end
 go
-select * from PostGradUser
-select * from NonGucianStudent
-drop proc userLogin
 Create proc userLogin
 @email varchar(20),
 @password varchar(20),

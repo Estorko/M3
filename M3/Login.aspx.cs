@@ -45,11 +45,14 @@ namespace M3
                 getID.ExecuteNonQuery();
                 Session["ID"] = id.Value;
                 conn.Close();
-                if (type.Value.ToString() == "0")
+                if (type.Value.ToString() == "0") //Student
                     Response.Redirect("Student_Main.aspx");
-                //else if(type.Value.ToString()=="1")
-                //else if (type.Value.ToString()=="2")
-                //else if (type.Value.ToString()=="3")
+                else if (type.Value.ToString() == "1")//Admin
+                    Response.Redirect("Admin.aspx");
+                else if (type.Value.ToString() == "2")//Supervisor
+                    Response.Redirect("suprvisor.aspx");
+                else if (type.Value.ToString() == "3") //Examiner
+                    Response.Redirect("Examiner_Main.aspx");
             }
             else Response.Write("Wrong password or email !");
         }
@@ -61,12 +64,10 @@ namespace M3
             protected void SupervisorRegister(object sender, EventArgs e)
             {
                 Response.Redirect("Register_Supervisor.aspx");
-
             }
             protected void ExaminerRegister(object sender, EventArgs e)
             {
                 Response.Redirect("Register_Examiner.aspx");
-
             }
     }
 }

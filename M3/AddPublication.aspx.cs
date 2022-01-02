@@ -44,16 +44,23 @@ namespace M3
             addpub.Parameters.Add(new SqlParameter("@place", Place));
             addpub.Parameters.Add(new SqlParameter("@accepted", accepted));
             conn.Open();
-            addpub.ExecuteNonQuery();
-            getPid.ExecuteNonQuery();
-            linkPub.Parameters.Add(new SqlParameter("@PubID", id.Value));
-            linkPub.Parameters.Add(new SqlParameter("@thesisSerialNo", Snum));
-            conn.Close();
-            string message = "Publication has been added to the ongoing Thesis with serial Number: "+Snum;
-            string t = "";
-            DialogResult result = MessageBox.Show(message, t);
-            if (result==DialogResult.OK)
-                Response.Redirect("Student_Main.aspx");
+            if (title == "" || pubDate == "" || Host == "" || Place == "")
+                Result.Text = "NO DATA ENTERED ! or MISSING DATA";
+            else
+            {
+                addpub.ExecuteNonQuery();
+                getPid.ExecuteNonQuery();
+                linkPub.Parameters.Add(new SqlParameter("@PubID", id.Value));
+                linkPub.Parameters.Add(new SqlParameter("@thesisSerialNo", Snum));
+                linkPub.ExecuteNonQuery();
+                conn.Close();
+                string message = "Publication has been added to the ongoing Thesis with serial Number: "
+                    +Snum;
+                string t = "";
+                DialogResult result = MessageBox.Show(message, t);
+                if (result==DialogResult.OK)
+                    Response.Redirect("Student_Main.aspx");
+            }
         }
     }
 }

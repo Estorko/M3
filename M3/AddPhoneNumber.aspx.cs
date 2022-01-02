@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Configuration;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Windows.Forms;
 
 namespace M3
 {
@@ -39,7 +40,15 @@ namespace M3
             else
             {
                 AddPhone.ExecuteNonQuery();
-                Result.Text = "Success !, Mobile Number added";
+                string message = "Success !, Mobile Number added";
+                string t = "";
+                DialogResult result = MessageBox.Show(message, t);
+                if (result == DialogResult.OK)
+                {
+                    String type = Session["userType"].ToString();
+                    if (type == "0")
+                        Response.Redirect("Student_Main.aspx");
+                }
             }
             conn.Close();
 
